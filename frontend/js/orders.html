@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - ShopHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-shopping-bag"></i>
+                <span>ShopHub</span>
+            </a>
+            
+            <div class="navbar-actions">
+                <div class="nav-item user-menu">
+                    <button id="userBtn" class="user-btn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName" class="user-name">Guest</span>
+                    </button>
+                    <div id="userDropdown" class="dropdown-menu hidden">
+                        <a href="orders.html"><i class="fas fa-list"></i> Orders</a>
+                        <div id="adminLink" class="hidden">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a href="login.html" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="orders-container">
+        <div class="section-header">
+            <h1><i class="fas fa-list"></i> My Orders</h1>
+            <p class="section-subtitle">Track and manage your orders</p>
+        </div>
+
+        <div id="ordersContent">
+            <div id="emptyOrdersMessage" class="empty-message">
+                <i class="fas fa-package"></i>
+                <h2>No orders yet</h2>
+                <p>Start shopping to place your first order</p>
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-shopping-bag"></i> Start Shopping
+                </a>
+            </div>
+
+            <div id="ordersGrid" class="orders-grid hidden">
+                <!-- Orders will be rendered here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="spinner hidden">
+        <div class="spinner-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize orders page
+        window.addEventListener('load', async () => {
+            await window.app.loadOrders();
+        });
+    </script>
+</body>
+</html>
