@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details - ShopHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <i class="fas fa-shopping-bag"></i>
+                <span>ShopHub</span>
+            </a>
+            
+            <div class="navbar-actions">
+                <div class="nav-item user-menu">
+                    <button id="userBtn" class="user-btn">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="userName" class="user-name">Guest</span>
+                    </button>
+                    <div id="userDropdown" class="dropdown-menu hidden">
+                        <a href="orders.html"><i class="fas fa-list"></i> Orders</a>
+                        <div id="adminLink" class="hidden">
+                            <a href="admin.html"><i class="fas fa-cog"></i> Admin Panel</a>
+                        </div>
+                        <hr>
+                        <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <a href="login.html" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="order-details-container">
+        <div class="order-header">
+            <a href="orders.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Orders
+            </a>
+            <h1 id="orderTitle">Order Details</h1>
+        </div>
+
+        <div class="order-content">
+            <div class="order-status-section">
+                <div class="status-card">
+                    <h2>Order Status</h2>
+                    <div id="statusTimeline" class="status-timeline">
+                        <!-- Status timeline will be rendered here -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-details-grid">
+                <div class="order-info-card">
+                    <h3><i class="fas fa-info-circle"></i> Order Information</h3>
+                    <div class="info-group">
+                        <label>Order ID</label>
+                        <p id="orderId"></p>
+                    </div>
+                    <div class="info-group">
+                        <label>Date</label>
+                        <p id="orderDate"></p>
+                    </div>
+                    <div class="info-group">
+                        <label>Status</label>
+                        <p id="orderStatus" class="status-badge"></p>
+                    </div>
+                </div>
+
+                <div class="order-info-card">
+                    <h3><i class="fas fa-truck"></i> Shipping</h3>
+                    <div class="info-group">
+                        <label>Tracking</label>
+                        <p id="trackingStatus"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-items-section">
+                <h2><i class="fas fa-box"></i> Items</h2>
+                <div id="orderItemsContainer" class="order-items-list">
+                    <!-- Items will be rendered here -->
+                </div>
+            </div>
+
+            <div class="order-summary-section">
+                <div class="summary-card">
+                    <h2>Order Summary</h2>
+                    
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="subtotalPrice" class="price">$0.00</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Shipping</span>
+                        <span class="price">Free</span>
+                    </div>
+                    
+                    <div class="summary-row">
+                        <span>Tax (10%)</span>
+                        <span id="taxPrice" class="price">$0.00</span>
+                    </div>
+                    
+                    <hr class="summary-divider">
+                    
+                    <div class="summary-row total">
+                        <span>Total</span>
+                        <span id="totalPrice" class="price">$0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="spinner hidden">
+        <div class="spinner-content">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="js/app.js"></script>
+    <script>
+        // Initialize order details page
+        window.addEventListener('load', async () => {
+            await window.app.loadOrderDetails();
+        });
+    </script>
+</body>
+</html>
